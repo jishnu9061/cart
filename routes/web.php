@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::post('/do-login', [LoginController::class, 'doLogin'])->name('do-login');
+
+// Route::group(['middleware'=>'admin'],function(){
+//     Route::get('/', [LoginController::class, 'dashboard'])->name('dashboard');
+// });

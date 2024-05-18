@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ use App\Http\Controllers\LoginController;
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/do-login', [LoginController::class, 'doLogin'])->name('do-login');
 
-// Route::group(['middleware'=>'admin'],function(){
-//     Route::get('/', [LoginController::class, 'dashboard'])->name('dashboard');
-// });
+Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware'=>'admin'],function(){
+    Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+    });
+     Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('index');
+    });
+});

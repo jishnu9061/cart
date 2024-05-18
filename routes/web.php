@@ -19,6 +19,8 @@ Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/do-login', [LoginController::class, 'doLogin'])->name('do-login');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware'=>'admin.auth'],function(){
+
+    Route::post('/logOut', [LoginController::class, 'logOut'])->name('logout');
     Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
     });

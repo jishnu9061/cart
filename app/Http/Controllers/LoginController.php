@@ -13,6 +13,7 @@ use App\Http\Helpers\ToastrHelper;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -44,5 +45,18 @@ class LoginController extends Controller
             ToastrHelper::error('Credentials is missing');
             return redirect()->route('login')->with('message', 'Invalid credentials');
         }
+    }
+
+    /**
+     *Log Out
+     *
+     * @param Request $request
+     *
+     * @return [type]
+     */
+    public function logOut(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

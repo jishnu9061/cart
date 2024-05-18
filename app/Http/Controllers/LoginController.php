@@ -1,25 +1,48 @@
 <?php
 
+/**
+ * Created By: JISHNU T K
+ * Date: 2024/05/19
+ * Time: 00:30:16
+ * Description: LoginController.php
+ */
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Helpers\ToastrHelper;
+
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * Login Page
+     *
+     * @return [type]
+     */
     public function login()
     {
         return view('pages.admin.auth.login');
     }
 
-    public function doLogin()
+    /**
+     * Login To Admin Panel
+     *
+     * @param LoginRequest $request
+     *
+     * @return [type]
+     */
+    public function doLogin(LoginRequest $request)
     {
-        if (auth()->attempt([
-            'email' => request('email'),
-            'password' => request('password'),
+        if (Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
         ])) {
             return view('pages.admin.dashboard');
         } else {
-            return redirect()->route('login')->with('message', 'invalid credential');
+            ToastrHelper::error('Credentials is missing');
+            return redirect()->route('login')->with('message', 'Invalid credentials');
         }
     }
 }

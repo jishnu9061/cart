@@ -22,7 +22,15 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=>'required|max:25'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'name.max' => 'The name may not be greater than 25 characters.',
         ];
     }
 }

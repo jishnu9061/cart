@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -18,6 +19,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
+Route::get('/product-list', [CartController::class, 'productList'])->name('product');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/cart', [CartController::class, 'getCart'])->name('get-cart');
 Route::post('/do-login', [LoginController::class, 'doLogin'])->name('do-login');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware'=>'admin.auth'],function(){

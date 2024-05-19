@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::select('id', 'name', 'created_at')->get();
+        $products = Product::select('id', 'name','description','image','created_at')->get();
         return view('pages.admin.product.index', compact('products'));
     }
 

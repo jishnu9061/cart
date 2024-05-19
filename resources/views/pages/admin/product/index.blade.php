@@ -19,6 +19,8 @@
                             <tr>
                                 <th class="d-none"></th>
                                 <th class="text-center">Name</th>
+                                <th class="text-center">Description</th>
+                                <th class="text-center">Image</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -27,6 +29,8 @@
                                 <tr>
                                     <td class="d-none">{{ $loop->iteration }}</td>
                                     <td class="text-center">{{ $product->name }}</td>
+                                    <td class="text-center">{{ $product->description }}</td>
+                                    <td class="text-center"><img src="{{  ProductHelper::getProductImagePath($product->image) }}" ></td>
                                     <td class="text-center">
                                         <div class="btn-group btn-group-sm">
 

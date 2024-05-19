@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'api'], function() {
     Route::get('/get-categories', [ApiManageController::class, 'getCategories']);
-    Route::post('/get-category-by-id', [ApiManageController::class, 'getCategoryById']);
+    Route::post('/get-category-by-id', [ApiManageController::class, 'getProductByCategoryId']);
 });

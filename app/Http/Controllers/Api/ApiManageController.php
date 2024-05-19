@@ -85,7 +85,7 @@ class ApiManageController extends Controller
      *
      * @return [type]
      */
-    public function getCategoryById(Request $request)
+    public function getProductByCategoryId(Request $request)
     {
 
         $validator = Validator::make($request->all(), [

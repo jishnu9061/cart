@@ -17,7 +17,7 @@ class ProductHelper
 
     public static function getProductImagePath($imageName)
     {
-        $file = asset('images/default-image.png');
+        $file = asset('lte/dist/img/avatar.png');
         if (null != $imageName) {
             if (FileManager::checkFileExist($imageName, FileDestinations::PRODUCT_IMAGE)) {
                 $file = FileManager::getFileUrl($imageName, FileDestinations::PRODUCT_IMAGE);

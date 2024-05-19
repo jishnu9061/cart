@@ -11,6 +11,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Helpers\ToastrHelper;
 
+use App\Models\Product;
+use App\Models\Category;
+
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -40,7 +43,9 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ])) {
-            return view('pages.admin.dashboard');
+            $totalCategories = Category::count();
+            $totalProducts = Product::count();
+            return view('pages.admin.dashboard',compact('totalCategories','totalProducts'));
         } else {
             ToastrHelper::error('Credentials is missing');
             return redirect()->route('login')->with('message', 'Invalid credentials');

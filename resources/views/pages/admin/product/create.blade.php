@@ -10,7 +10,8 @@
                         <div class="form-row">
                             <div class="col-md-6 form-group">
                                 <label for="name">Name <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Enter Name">
+                                <input type="text" class="form-control" name="name" id="name"
+                                    value="{{ old('name') }}" placeholder="Enter Name">
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -26,8 +27,9 @@
                                 <label for="category_id">Category <span class="text-danger">*</span></label>
                                 <select class="form-control" name="category_id" id="category_id">
                                     <option value="">Select Category</option>
-                                    @foreach($categories as $id => $name)
-                                        <option value="{{ $id }}" {{ old('category_id') == $id ? 'selected' : '' }}>
+                                    @foreach ($categories as $id => $name)
+                                        <option value="{{ $id }}"
+                                            {{ old('category_id') == $id ? 'selected' : '' }}>
                                             {{ $name }}
                                         </option>
                                     @endforeach

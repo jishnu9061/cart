@@ -1,8 +1,7 @@
 @extends('layouts.admin-dashboard')
 
 @push('styles')
-    <link rel="stylesheet"
-        href="{{ asset('lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
 @endpush
 
 @section('content')
@@ -11,7 +10,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Products</h3>
-                    <a href="{{ route('admin.product.create') }}" class="btn btn-primary" style="float: right" >Create</a>
+                    <a href="{{ route('admin.product.create') }}" class="btn btn-primary" style="float: right">Create</a>
 
                 </div>
                 <div class="card-body table-responsive">
@@ -33,8 +32,9 @@
 
                                             &nbsp;<a href="{{ route('admin.product.edit', $product->id) }}"
                                                 class="btn btn-info" title="Edit"><i class="fas fa-edit"></i></a>
-                                                &nbsp;<a data-href="{{ route('admin.product.delete', $product->id) }}"
-                                                    class="btn btn-danger delete" title="Delete"><i class="fas fa-trash-alt"></i></a>
+                                            &nbsp;<a data-href="{{ route('admin.product.delete', $product->id) }}"
+                                                class="btn btn-danger delete" title="Delete"><i
+                                                    class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </td>
                                 </tr>

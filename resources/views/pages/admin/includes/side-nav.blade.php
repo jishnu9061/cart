@@ -28,13 +28,13 @@
                     <p>{{ __('Categories') }}</p>
                 </a>
             </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.product.index') }}"
-                class="nav-link {{ request()->is('admin/product') || request()->is('admin/product/*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-shopping-cart"></i>
-                <p>{{ __('Products') }}</p>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.product.index') }}"
+                    class="nav-link {{ request()->is('admin/product') || request()->is('admin/product/*') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-shopping-cart"></i>
+                    <p>{{ __('Products') }}</p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}"
                     onclick="event.preventDefault();if(confirm('Are you sure you want to logout?')) document.getElementById('logout-form').submit();">

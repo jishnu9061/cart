@@ -209,6 +209,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Toastr' => \App\Http\Helpers\ToastrHelper::class,
+        'ProductHelper' => \App\Http\Helpers\ProductHelper::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 

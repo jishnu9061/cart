@@ -48,7 +48,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                                 @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" style="max-width: 100px;">
+                                    <img src="{{ ProductHelper::getProductImagePath($product->image) }}" alt="Product Image" style="max-width: 100px;">
                                 @endif
                             </div>
                         </div>

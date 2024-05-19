@@ -28,5 +28,18 @@ class ProductUpdateRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ];
     }
-    
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name field is required.',
+            'name.max' => 'The name may not be greater than 255 characters.',
+            'description.max' => 'The description may not be greater than 255 characters.',
+            'category_id.required' => 'The category is required.',
+            'category_id.exists' => 'The selected category is invalid.',
+            'image.image' => 'The file must be an image.',
+            'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
+        ];
+    }
+
 }

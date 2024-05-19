@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -20,11 +22,26 @@ Route::post('/do-login', [LoginController::class, 'doLogin'])->name('do-login');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware'=>'admin.auth'],function(){
 
-    Route::post('/logOut', [LoginController::class, 'logOut'])->name('logout');
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::post('/logout', [LoginController::class, 'logOut'])->name('logout');
+
+    // Category
     Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('create');
+        Route::post('/store', [CategoryController::class, 'store'])->name('store');
+        Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
+        Route::delete('/delete/{category}', [CategoryController::class, 'delete'])->name('delete');
+        Route::put('/update/{category}', [CategoryController::class, 'update'])->name('update');
     });
+
+    // Product
      Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
-        Route::get('/', [CategoryController::class, 'index'])->name('index');
+        Route::get('/', [ProductController::class, 'index'])->name('index');
+        Route::get('/create', [ProductController::class, 'create'])->name('create');
+        Route::post('/store', [ProductController::class, 'store'])->name('store');
+        Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
+        Route::delete('/delete/{product}', [ProductController::class, 'delete'])->name('delete');
+        Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
     });
 });

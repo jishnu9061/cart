@@ -20,6 +20,7 @@
                                 Cart</button>
                         </div>
                     </div>
+                    <br>
                 </div>
             @endforeach
         </div>

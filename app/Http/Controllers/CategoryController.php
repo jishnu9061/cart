@@ -12,10 +12,11 @@ namespace App\Http\Controllers;
 use App\Http\Helpers\ToastrHelper;
 
 use App\Models\Category;
+use App\Models\Product;
 
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
-use App\Models\Product;
+
 use Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;

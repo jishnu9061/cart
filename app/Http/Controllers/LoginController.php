@@ -15,6 +15,7 @@ use App\Models\Product;
 use App\Models\Category;
 
 use App\Http\Requests\LoginRequest;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
@@ -45,7 +46,7 @@ class LoginController extends Controller
         ])) {
             $totalCategories = Category::count();
             $totalProducts = Product::count();
-            return view('pages.admin.dashboard',compact('totalCategories','totalProducts'));
+            return view('pages.admin.dashboard', compact('totalCategories', 'totalProducts'));
         } else {
             ToastrHelper::error('Credentials is missing');
             return redirect()->route('login')->with('message', 'Invalid credentials');

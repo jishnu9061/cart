@@ -9,6 +9,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
+
 use App\Http\Constants\FileDestinations;
 
 use App\Http\Helpers\Core\FileManager;
@@ -17,8 +19,6 @@ use App\Models\Product;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-
 use Illuminate\Support\Facades\Validator;
 
 class ApiManageController extends Controller

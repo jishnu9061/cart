@@ -62,5 +62,4 @@ class ToastrHelper
         ];
         Session::put('appNotificaion', $data);
     }
-
 }

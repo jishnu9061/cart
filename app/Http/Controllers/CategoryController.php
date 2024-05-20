@@ -15,7 +15,7 @@ use App\Models\Category;
 
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
-
+use App\Models\Product;
 use Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -90,7 +90,15 @@ class CategoryController extends Controller
      */
     public function delete(Category $category)
     {
-        $category->delete();
-        return Response::json(['success' => 'Category Deleted Successfully']);
+        try {
+            $productExist = Product::where('category_id', $category->id)->exists();
+            if ($productExist) {
+                return Response::json(['error' => 'Category cannot be deleted because it has associated products'], 400);
+            }
+            $category->delete();
+            return Response::json(['success' => 'Category Deleted Successfully']);
+        } catch (\Exception $e) {
+            return Response::json(['error' => 'An error occurred while deleting the category: ' . $e->getMessage()], 500);
+        }
     }
 }
